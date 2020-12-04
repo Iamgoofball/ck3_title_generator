@@ -1,0 +1,9 @@
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.exe.config
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.exe
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.pdb
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.csprojAssemblyReference.cache
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.CK3DefinitionsApp.resources
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.Properties.Resources.resources
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.csproj.GenerateResource.cache
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.exe
+C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.pdb
