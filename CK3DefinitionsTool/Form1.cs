@@ -276,6 +276,10 @@ namespace CK3DefinitionsTool
 
         private void TitleLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (AutogenID.Checked)
+            {
+                generate_id_name();
+            }
             CK3Title SelectedTitle = titles[SelectedEntry.Text];
             ValidDeJureTitles.Items.Clear();
             switch (TitleLevel.Text)
@@ -381,7 +385,7 @@ namespace CK3DefinitionsTool
                 
                 if (barony.Value.title_level == "Barony")
                 {
-                    OutputCode.Text += String.Concat(barony.Value.province_id, ";", barony.Value.csv_color.R, ";", barony.Value.csv_color.G, ";", barony.Value.csv_color.B, ";", barony.Value.id_name, ";x;");
+                    OutputCode.Text += String.Concat(barony.Value.province_id, ";", barony.Value.csv_color.R, ";", barony.Value.csv_color.G, ";", barony.Value.csv_color.B, ";", barony.Value.id_name, ";x;\n");
                 }
             }
         }
@@ -393,6 +397,59 @@ namespace CK3DefinitionsTool
             {
                 OutputCode.Text += String.Concat("\n ", title.Value.id_name, ":0 \"", title.Value.pretty_name, "\"");
             }
+        }
+
+        private void InternalIDName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PrettyNameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (AutogenID.Checked)
+            {
+                generate_id_name();
+            }
+        }
+
+        private void AutogenID_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AutogenID.Checked)
+            {
+                InternalIDName.ReadOnly = true;
+                generate_id_name();
+            }
+            else
+            {
+                InternalIDName.ReadOnly = false;
+            }
+        }
+        private void generate_id_name()
+        {
+            switch (TitleLevel.Text)
+            {
+                case "Barony":
+                    InternalIDName.Text = "b_";
+                    break;
+                case "County":
+                    InternalIDName.Text = "c_";
+                    break;
+                case "Duchy":
+                    InternalIDName.Text = "d_";
+                    break;
+                case "Kingdom":
+                    InternalIDName.Text = "k_";
+                    break;
+                case "Empire":
+                    InternalIDName.Text = "e_";
+                    break;
+            }
+            InternalIDName.Text += PrettyNameBox.Text.ToLower().Replace(" ", "_").Replace("'s", "").Replace("'", "");
+        }
+
+        private void OutputCode_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     public class CK3Title : Object

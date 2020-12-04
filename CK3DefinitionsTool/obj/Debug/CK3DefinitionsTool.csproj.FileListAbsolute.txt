@@ -7,3 +7,12 @@ C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3D
 C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.csproj.GenerateResource.cache
 C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.exe
 C:\Users\iamgo\source\repos\CK3DefinitionsTool\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.pdb
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.csprojAssemblyReference.cache
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.CK3DefinitionsApp.resources
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.Properties.Resources.resources
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.csproj.GenerateResource.cache
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.exe
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\obj\Debug\CK3DefinitionsTool.pdb
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.exe.config
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.exe
+C:\Users\iamgo\OneDrive\Documents\ck3_title_generator\CK3DefinitionsTool\bin\Debug\CK3DefinitionsTool.pdb

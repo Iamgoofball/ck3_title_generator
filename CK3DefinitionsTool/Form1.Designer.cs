@@ -55,6 +55,7 @@
             this.LandedTitlesButton = new System.Windows.Forms.Button();
             this.DefinitionsButton = new System.Windows.Forms.Button();
             this.LocalizationButton = new System.Windows.Forms.Button();
+            this.AutogenID = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ProvinceID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,14 +110,18 @@
             this.PrettyNameBox.Name = "PrettyNameBox";
             this.PrettyNameBox.Size = new System.Drawing.Size(243, 20);
             this.PrettyNameBox.TabIndex = 5;
+            this.PrettyNameBox.Text = "Starting Title";
+            this.PrettyNameBox.TextChanged += new System.EventHandler(this.PrettyNameBox_TextChanged);
             // 
             // InternalIDName
             // 
             this.InternalIDName.Location = new System.Drawing.Point(15, 109);
             this.InternalIDName.Name = "InternalIDName";
+            this.InternalIDName.ReadOnly = true;
             this.InternalIDName.Size = new System.Drawing.Size(243, 20);
             this.InternalIDName.TabIndex = 6;
             this.InternalIDName.Text = "e_starting_title";
+            this.InternalIDName.TextChanged += new System.EventHandler(this.InternalIDName_TextChanged);
             // 
             // label4
             // 
@@ -272,6 +277,8 @@
             this.OutputCode.Size = new System.Drawing.Size(325, 277);
             this.OutputCode.TabIndex = 21;
             this.OutputCode.Text = "";
+            this.OutputCode.WordWrap = false;
+            this.OutputCode.TextChanged += new System.EventHandler(this.OutputCode_TextChanged);
             // 
             // label11
             // 
@@ -312,11 +319,25 @@
             this.LocalizationButton.UseVisualStyleBackColor = true;
             this.LocalizationButton.Click += new System.EventHandler(this.LocalizationButton_Click);
             // 
+            // AutogenID
+            // 
+            this.AutogenID.AutoSize = true;
+            this.AutogenID.Checked = true;
+            this.AutogenID.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AutogenID.Location = new System.Drawing.Point(113, 50);
+            this.AutogenID.Name = "AutogenID";
+            this.AutogenID.Size = new System.Drawing.Size(145, 17);
+            this.AutogenID.TabIndex = 26;
+            this.AutogenID.Text = "Auto-generate Internal ID";
+            this.AutogenID.UseVisualStyleBackColor = true;
+            this.AutogenID.CheckedChanged += new System.EventHandler(this.AutogenID_CheckedChanged);
+            // 
             // CK3DefinitionsApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 316);
+            this.Controls.Add(this.AutogenID);
             this.Controls.Add(this.LocalizationButton);
             this.Controls.Add(this.DefinitionsButton);
             this.Controls.Add(this.LandedTitlesButton);
@@ -381,6 +402,7 @@
         private System.Windows.Forms.Button LandedTitlesButton;
         private System.Windows.Forms.Button DefinitionsButton;
         private System.Windows.Forms.Button LocalizationButton;
+        private System.Windows.Forms.CheckBox AutogenID;
     }
 }
 
