@@ -43,7 +43,6 @@ namespace CK3DefinitionsTool
                                 ValidDeJureTitles.Items.Add(checked_title.id_name, SelectedTitle.dejure_titles.Contains(checked_title));
                             }
                         }
-                        SelectedTitle.capital_county = titles[CapitalSelect.Text];
                         break;
                     case "Duchy":
                         foreach (var title in titles)
@@ -54,7 +53,6 @@ namespace CK3DefinitionsTool
                                 ValidDeJureTitles.Items.Add(checked_title.id_name, SelectedTitle.dejure_titles.Contains(checked_title));
                             }
                         }
-                        SelectedTitle.capital_county = titles[CapitalSelect.Text];
                         break;
                     case "Kingdom":
                         foreach (var title in titles)
@@ -65,7 +63,6 @@ namespace CK3DefinitionsTool
                                 ValidDeJureTitles.Items.Add(checked_title.id_name, SelectedTitle.dejure_titles.Contains(checked_title));
                             }
                         }
-                        SelectedTitle.capital_county = titles[CapitalSelect.Text];
                         break;
                     case "Empire":
                         foreach (var title in titles)
@@ -76,7 +73,6 @@ namespace CK3DefinitionsTool
                                 ValidDeJureTitles.Items.Add(checked_title.id_name, SelectedTitle.dejure_titles.Contains(checked_title));
                             }
                         }
-                        SelectedTitle.capital_county = titles[CapitalSelect.Text];
                         break;
                 }
             }
@@ -85,8 +81,15 @@ namespace CK3DefinitionsTool
             {
                 dejure_titles.Add(titles[ValidDeJureTitles.CheckedItems[i].ToString()]);
             }
+            if (titles.ContainsKey(CapitalSelect.Text))
+            {
+                SelectedTitle.capital_county = titles[CapitalSelect.Text];
+            }
             SelectedTitle.dejure_titles = dejure_titles;
             SelectedTitle.title_level = TitleLevel.Text;
+            SelectedTitle.religion = ReligionBox.Text;
+            SelectedTitle.culture = CultureBox.Text;
+            SelectedTitle.holding_type = HoldingSelect.Text;
 
         }
         private void refresh_gui()
@@ -171,6 +174,9 @@ namespace CK3DefinitionsTool
             InternalIDName.Text = SelectedTitle.id_name;
             IGTitleColor.BackColor = SelectedTitle.title_color;
             TitleLevel.Text = SelectedTitle.title_level;
+            ReligionBox.Text = SelectedTitle.religion;
+            CultureBox.Text = SelectedTitle.culture;
+            HoldingSelect.Text = SelectedTitle.holding_type;
             if (ProvinceID.Enabled)
             {
                 ProvinceID.Value = SelectedTitle.province_id;
@@ -191,7 +197,7 @@ namespace CK3DefinitionsTool
                 if (checked_title.title_level == "Empire")
                 {
                     TreeNode BaseNode = ProvinceHierarchy.Nodes.Add(checked_title.id_name);
-                    if(checked_title.dejure_titles.Count() >= 1)
+                    if (checked_title.dejure_titles.Count() >= 1)
                     {
                         foreach (CK3Title kingdom in checked_title.dejure_titles)
                         {
@@ -235,7 +241,7 @@ namespace CK3DefinitionsTool
             {
                 capital_title_stuff = titles[CapitalSelect.Text];
             }
-            CK3Title new_title = new CK3Title(ProvinceID.Value, InternalIDName.Text, PrettyNameBox.Text, TitleLevel.Text, CSVColor.BackColor, IGTitleColor.BackColor, capital_title_stuff, dejure_titles);
+            CK3Title new_title = new CK3Title(ProvinceID.Value, InternalIDName.Text, PrettyNameBox.Text, TitleLevel.Text, CSVColor.BackColor, IGTitleColor.BackColor, capital_title_stuff, dejure_titles, ReligionBox.Text, CultureBox.Text, HoldingSelect.Text);
             titles.Add(new_title.id_name, new_title);
             SelectedEntry.Items.Add(InternalIDName.Text);
             SelectedEntry.Text = InternalIDName.Text;
@@ -272,6 +278,10 @@ namespace CK3DefinitionsTool
                 create_title();
             }
             refresh_gui();
+            if (TitleLevel.Text == "Barony")
+            {
+                ProvinceID.Value += 1;
+            }
         }
 
         private void TitleLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -289,12 +299,18 @@ namespace CK3DefinitionsTool
                     CSVColor.Enabled = true;
                     CapitalSelect.Enabled = false;
                     ValidDeJureTitles.Enabled = false;
+                    HoldingSelect.Enabled = true;
+                    ReligionBox.Enabled = false;
+                    CultureBox.Enabled = false;
                     break;
                 case "County":
                     ProvinceID.Enabled = false;
                     CSVColor.Enabled = false;
                     CapitalSelect.Enabled = false;
                     ValidDeJureTitles.Enabled = true;
+                    HoldingSelect.Enabled = false;
+                    ReligionBox.Enabled = true;
+                    CultureBox.Enabled = true;
                     foreach (var title in titles)
                     {
                         CK3Title checked_title = title.Value;
@@ -309,6 +325,9 @@ namespace CK3DefinitionsTool
                     CSVColor.Enabled = false;
                     CapitalSelect.Enabled = true;
                     ValidDeJureTitles.Enabled = true;
+                    HoldingSelect.Enabled = false;
+                    ReligionBox.Enabled = false;
+                    CultureBox.Enabled = false;
                     foreach (var title in titles)
                     {
                         CK3Title checked_title = title.Value;
@@ -323,6 +342,9 @@ namespace CK3DefinitionsTool
                     CSVColor.Enabled = false;
                     CapitalSelect.Enabled = true;
                     ValidDeJureTitles.Enabled = true;
+                    HoldingSelect.Enabled = false;
+                    ReligionBox.Enabled = false;
+                    CultureBox.Enabled = false;
                     foreach (var title in titles)
                     {
                         CK3Title checked_title = title.Value;
@@ -337,6 +359,9 @@ namespace CK3DefinitionsTool
                     CSVColor.Enabled = false;
                     CapitalSelect.Enabled = true;
                     ValidDeJureTitles.Enabled = true;
+                    HoldingSelect.Enabled = false;
+                    ReligionBox.Enabled = false;
+                    CultureBox.Enabled = false;
                     foreach (var title in titles)
                     {
                         CK3Title checked_title = title.Value;
@@ -370,7 +395,7 @@ namespace CK3DefinitionsTool
             OutputCode.Text = "";
             foreach (var empires in titles)
             {
-                if(empires.Value.title_level == "Empire")
+                if (empires.Value.title_level == "Empire")
                 {
                     OutputCode.Text += empires.Value.print_landed_title();
                 }
@@ -382,7 +407,7 @@ namespace CK3DefinitionsTool
             OutputCode.Text = "";
             foreach (var barony in titles)
             {
-                
+
                 if (barony.Value.title_level == "Barony")
                 {
                     OutputCode.Text += String.Concat(barony.Value.province_id, ";", barony.Value.csv_color.R, ";", barony.Value.csv_color.G, ";", barony.Value.csv_color.B, ";", barony.Value.id_name, ";x;\n");
@@ -451,54 +476,125 @@ namespace CK3DefinitionsTool
         {
 
         }
-    }
-    public class CK3Title : Object
-    {
-        public decimal province_id;
-        public string id_name;
-        public string pretty_name;
-        public string title_level;
-        public Color csv_color;
-        public Color title_color;
-        public CK3Title capital_county;
-        public List<CK3Title> dejure_titles;
-        public CK3Title(decimal province_id, string id_name, string pretty_name, string title_level, Color csv_color, Color title_color, CK3Title capital_county, List<CK3Title> dejure_titles)
+
+        private void MapBox_MouseUp(object sender, MouseEventArgs e)
         {
-            this.province_id = province_id;
-            this.id_name = id_name;
-            this.pretty_name = pretty_name;
-            this.title_level = title_level;
-            this.csv_color = csv_color;
-            this.title_color = title_color;
-            this.capital_county = capital_county;
-            this.dejure_titles = dejure_titles;
-        }
-        public string print_landed_title(int recursion_level = 0)
-        {
-            String final_print = "";
-            final_print += String.Concat(String.Concat(Enumerable.Repeat("\t", recursion_level)), id_name);
-            final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "{");
-            if(title_level == "Barony")
+            Bitmap b = new Bitmap(MapBox.Image);
+            Color color = b.GetPixel(e.X, e.Y);
+            if (EyedropperToggle.Checked)
             {
-                final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tprovince = ", province_id);
-            }
-            final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcolor = { ",title_color.R, " ",title_color.G, " ",title_color.B, " }");
-            final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcolor = { 255 255 255 }");
-            if(capital_county != null)
-            {
-                final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcapital = ", capital_county.id_name);
-            }
-            if(dejure_titles.Count() >= 1)
-            {
-                foreach(var title in dejure_titles)
+                if (CopyColors.Checked)
                 {
-                    final_print += "\n";
-                    final_print += title.print_landed_title(recursion_level + 1);
+                    CSVColor.BackColor = color;
+                    IGTitleColor.BackColor = color;
+                }
+                else
+                {
+                    IGTitleColor.BackColor = color;
                 }
             }
-            final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "}");
-            return final_print;
         }
-        
+        public class CK3Title : Object
+        {
+            public decimal province_id;
+            public string id_name;
+            public string pretty_name;
+            public string title_level;
+            public Color csv_color;
+            public Color title_color;
+            public CK3Title capital_county;
+            public List<CK3Title> dejure_titles;
+            public string religion;
+            public string culture;
+            public string holding_type;
+            public CK3Title(decimal province_id, string id_name, string pretty_name, string title_level, Color csv_color, Color title_color, CK3Title capital_county, List<CK3Title> dejure_titles, string religion, string culture, string holding_type)
+            {
+                this.province_id = province_id;
+                this.id_name = id_name;
+                this.pretty_name = pretty_name;
+                this.title_level = title_level;
+                this.csv_color = csv_color;
+                this.title_color = title_color;
+                this.capital_county = capital_county;
+                this.dejure_titles = dejure_titles;
+                this.religion = religion;
+                this.culture = culture;
+                this.holding_type = holding_type;
+            }
+            public string print_landed_title(int recursion_level = 0)
+            {
+                String final_print = "";
+                final_print += String.Concat(String.Concat(Enumerable.Repeat("\t", recursion_level)), id_name, " = {");
+                if (title_level == "Barony")
+                {
+                    final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tprovince = ", province_id);
+                    final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)));
+                }
+                final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcolor = { ", title_color.R, " ", title_color.G, " ", title_color.B, " }");
+                final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcolor2 = { 255 255 255 }");
+                if (capital_county != null && title_level != "County")
+                {
+                    final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "\tcapital = ", capital_county.id_name);
+                }
+                if (dejure_titles.Count() >= 1)
+                {
+                    foreach (var title in dejure_titles)
+                    {
+                        final_print += "\n";
+                        final_print += title.print_landed_title(recursion_level + 1);
+                    }
+                }
+                final_print += String.Concat("\n", String.Concat(Enumerable.Repeat("\t", recursion_level)), "}");
+                return final_print;
+            }
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "png files (*.png)|*.png";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    MapBox.Image = Image.FromFile(dlg.FileName);
+                }
+            }
+        }
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HistoryGenerator_Click(object sender, EventArgs e)
+        {
+            OutputCode.Text = "";
+            foreach (var county in titles)
+            {
+                if (county.Value.title_level == "County")
+                {
+                    if (county.Value.dejure_titles.Count > 0)
+                    {
+                        OutputCode.Text += String.Concat("####", county.Value.id_name, "\n");
+                        for (int i = 0; i < county.Value.dejure_titles.Count; i++)
+                        {
+                            if(i == 0)
+                            {
+                                OutputCode.Text += String.Concat(county.Value.dejure_titles[i].province_id, " = { #", county.Value.dejure_titles[i].id_name, "\n" );
+                                OutputCode.Text += String.Concat("\tculture = ", county.Value.culture, "\n");
+                                OutputCode.Text += String.Concat("\treligion = ", county.Value.religion, "\n\n");
+                                OutputCode.Text += String.Concat("\tholding = ", county.Value.dejure_titles[i].holding_type, "\n}\n");
+                            }
+                            else
+                            {
+                                OutputCode.Text += String.Concat(county.Value.dejure_titles[i].province_id, " = { #", county.Value.dejure_titles[i].id_name, "\n");
+                                OutputCode.Text += String.Concat("\tholding = ", county.Value.dejure_titles[i].holding_type, "\n}\n");
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

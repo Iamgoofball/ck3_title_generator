@@ -56,7 +56,21 @@
             this.DefinitionsButton = new System.Windows.Forms.Button();
             this.LocalizationButton = new System.Windows.Forms.Button();
             this.AutogenID = new System.Windows.Forms.CheckBox();
+            this.HistoryGenerator = new System.Windows.Forms.Button();
+            this.CopyColors = new System.Windows.Forms.CheckBox();
+            this.HoldingSelect = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.EyedropperToggle = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MapBox = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ReligionBox = new System.Windows.Forms.TextBox();
+            this.CultureBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ProvinceID)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapBox)).BeginInit();
             this.SuspendLayout();
             // 
             // SelectedEntry
@@ -81,7 +95,7 @@
             // 
             // ProvinceHierarchy
             // 
-            this.ProvinceHierarchy.Location = new System.Drawing.Point(723, 25);
+            this.ProvinceHierarchy.Location = new System.Drawing.Point(895, 25);
             this.ProvinceHierarchy.Name = "ProvinceHierarchy";
             this.ProvinceHierarchy.Size = new System.Drawing.Size(238, 279);
             this.ProvinceHierarchy.TabIndex = 2;
@@ -89,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(723, 8);
+            this.label2.Location = new System.Drawing.Point(892, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 3;
@@ -221,7 +235,7 @@
             // 
             this.ValidDeJureTitles.Enabled = false;
             this.ValidDeJureTitles.FormattingEnabled = true;
-            this.ValidDeJureTitles.Location = new System.Drawing.Point(143, 148);
+            this.ValidDeJureTitles.Location = new System.Drawing.Point(142, 159);
             this.ValidDeJureTitles.Name = "ValidDeJureTitles";
             this.ValidDeJureTitles.ScrollAlwaysVisible = true;
             this.ValidDeJureTitles.Size = new System.Drawing.Size(218, 154);
@@ -230,7 +244,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(143, 132);
+            this.label9.Location = new System.Drawing.Point(142, 143);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 17;
@@ -274,7 +288,7 @@
             this.OutputCode.Location = new System.Drawing.Point(392, 25);
             this.OutputCode.Name = "OutputCode";
             this.OutputCode.ReadOnly = true;
-            this.OutputCode.Size = new System.Drawing.Size(325, 277);
+            this.OutputCode.Size = new System.Drawing.Size(497, 277);
             this.OutputCode.TabIndex = 21;
             this.OutputCode.Text = "";
             this.OutputCode.WordWrap = false;
@@ -332,11 +346,146 @@
             this.AutogenID.UseVisualStyleBackColor = true;
             this.AutogenID.CheckedChanged += new System.EventHandler(this.AutogenID_CheckedChanged);
             // 
+            // HistoryGenerator
+            // 
+            this.HistoryGenerator.Location = new System.Drawing.Point(270, 132);
+            this.HistoryGenerator.Name = "HistoryGenerator";
+            this.HistoryGenerator.Size = new System.Drawing.Size(116, 21);
+            this.HistoryGenerator.TabIndex = 27;
+            this.HistoryGenerator.Text = "Generate History";
+            this.HistoryGenerator.UseVisualStyleBackColor = true;
+            this.HistoryGenerator.Click += new System.EventHandler(this.HistoryGenerator_Click);
+            // 
+            // CopyColors
+            // 
+            this.CopyColors.AutoSize = true;
+            this.CopyColors.Checked = true;
+            this.CopyColors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CopyColors.Location = new System.Drawing.Point(15, 310);
+            this.CopyColors.Name = "CopyColors";
+            this.CopyColors.Size = new System.Drawing.Size(82, 17);
+            this.CopyColors.TabIndex = 28;
+            this.CopyColors.Text = "Sync Colors";
+            this.CopyColors.UseVisualStyleBackColor = true;
+            // 
+            // HoldingSelect
+            // 
+            this.HoldingSelect.Enabled = false;
+            this.HoldingSelect.FormattingEnabled = true;
+            this.HoldingSelect.Items.AddRange(new object[] {
+            "none",
+            "castle_holding",
+            "church_holding",
+            "city_holding",
+            "tribal_holding"});
+            this.HoldingSelect.Location = new System.Drawing.Point(15, 342);
+            this.HoldingSelect.Name = "HoldingSelect";
+            this.HoldingSelect.Size = new System.Drawing.Size(121, 21);
+            this.HoldingSelect.TabIndex = 29;
+            this.HoldingSelect.Text = "none";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 326);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Holding Type";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 495);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 256);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Load New Map Image";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // EyedropperToggle
+            // 
+            this.EyedropperToggle.AutoSize = true;
+            this.EyedropperToggle.Checked = true;
+            this.EyedropperToggle.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EyedropperToggle.Location = new System.Drawing.Point(16, 472);
+            this.EyedropperToggle.Name = "EyedropperToggle";
+            this.EyedropperToggle.Size = new System.Drawing.Size(120, 17);
+            this.EyedropperToggle.TabIndex = 33;
+            this.EyedropperToggle.Text = "Copy Color On Click";
+            this.EyedropperToggle.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.MapBox);
+            this.panel1.Location = new System.Drawing.Point(145, 326);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(988, 425);
+            this.panel1.TabIndex = 34;
+            // 
+            // MapBox
+            // 
+            this.MapBox.Location = new System.Drawing.Point(-1, -1);
+            this.MapBox.Name = "MapBox";
+            this.MapBox.Size = new System.Drawing.Size(988, 425);
+            this.MapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.MapBox.TabIndex = 0;
+            this.MapBox.TabStop = false;
+            this.MapBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MapBox_MouseUp);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 366);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 13);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "Religion Type";
+            // 
+            // ReligionBox
+            // 
+            this.ReligionBox.Enabled = false;
+            this.ReligionBox.Location = new System.Drawing.Point(15, 383);
+            this.ReligionBox.Name = "ReligionBox";
+            this.ReligionBox.Size = new System.Drawing.Size(126, 20);
+            this.ReligionBox.TabIndex = 36;
+            // 
+            // CultureBox
+            // 
+            this.CultureBox.Enabled = false;
+            this.CultureBox.Location = new System.Drawing.Point(15, 422);
+            this.CultureBox.Name = "CultureBox";
+            this.CultureBox.Size = new System.Drawing.Size(126, 20);
+            this.CultureBox.TabIndex = 38;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 406);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 13);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "Culture Type";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
             // CK3DefinitionsApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 316);
+            this.ClientSize = new System.Drawing.Size(1145, 763);
+            this.Controls.Add(this.CultureBox);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.ReligionBox);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.EyedropperToggle);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.HoldingSelect);
+            this.Controls.Add(this.CopyColors);
+            this.Controls.Add(this.HistoryGenerator);
             this.Controls.Add(this.AutogenID);
             this.Controls.Add(this.LocalizationButton);
             this.Controls.Add(this.DefinitionsButton);
@@ -368,6 +517,9 @@
             this.Text = "CK3 Definitions Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProvinceID)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MapBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +555,18 @@
         private System.Windows.Forms.Button DefinitionsButton;
         private System.Windows.Forms.Button LocalizationButton;
         private System.Windows.Forms.CheckBox AutogenID;
+        private System.Windows.Forms.Button HistoryGenerator;
+        private System.Windows.Forms.CheckBox CopyColors;
+        private System.Windows.Forms.ComboBox HoldingSelect;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox EyedropperToggle;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox MapBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox ReligionBox;
+        private System.Windows.Forms.TextBox CultureBox;
+        private System.Windows.Forms.Label label14;
     }
 }
 
