@@ -275,6 +275,14 @@ namespace CK3DefinitionsTool
             }
             else
             {
+                foreach (var title in titles)
+                {
+                    if(title.Value.title_level == "Barony" && title.Value.id_name != InternalIDName.Text && title.Value.province_id == ProvinceID.Value)
+                    {
+                        refresh_gui(); // prevents ID dupes
+                        return;
+                    }
+                }
                 create_title();
             }
             refresh_gui();
